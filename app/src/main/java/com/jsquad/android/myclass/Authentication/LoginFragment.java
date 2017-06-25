@@ -22,6 +22,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.jsquad.android.myclass.R;
 
@@ -30,7 +31,7 @@ import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
-public class LoginFragment extends Fragment implements LoaderCallbacks<Cursor> {
+public class LoginFragment extends Fragment implements LoaderCallbacks<Cursor>, LoginContract.View {
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -39,10 +40,15 @@ public class LoginFragment extends Fragment implements LoaderCallbacks<Cursor> {
 
     private AutoCompleteTextView email;
     private EditText password;
+
     private ProgressBar loginProgress;
+
     private View loginForm;
+
     private Button signInButton;
 
+    private TextView signUp;
+    private TextView forgotPassword;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -53,10 +59,14 @@ public class LoginFragment extends Fragment implements LoaderCallbacks<Cursor> {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_login, container, false);
 
+        loginProgress = (ProgressBar) v.findViewById(R.id.login_progress);
+        loginForm = v.findViewById(R.id.login_form);
+
         email = (AutoCompleteTextView) v.findViewById(R.id.email);
         populateAutoComplete();
 
         password = (EditText) v.findViewById(R.id.password);
+
         signInButton = (Button) v.findViewById(R.id.sign_in_button);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,12 +75,41 @@ public class LoginFragment extends Fragment implements LoaderCallbacks<Cursor> {
             }
         });
 
-        loginProgress = (ProgressBar) v.findViewById(R.id.login_progress);
-        loginForm = v.findViewById(R.id.login_form);
+        signUp =(TextView) v.findViewById(R.id.sign_up);
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle sign up
+            }
+        });
+
+        forgotPassword = (TextView) v.findViewById(R.id.forgot_password);
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle forgot password
+            }
+        });
 
         return v;
     }
 
+    @Override
+    public void grantAccess() {
+        // This should grant the user access to the app (meaning, their login credentials is valid
+    }
+
+    @Override
+    public void displayEmailError(String errorMessage) {
+        // This should display the errorMessage in the email field
+        // example; email.setError(errorMessage).
+        // Too easy :)
+    }
+
+    @Override
+    public void displayPasswordError(String errorMessage) {
+        // Same as above. password.setError(errorMessage)
+    }
 
     // POPULATE THE EMAIL FIELD WITH THE EMAIL ADDRESS ASSOCIATED WITH THE USER
     private void populateAutoComplete() {

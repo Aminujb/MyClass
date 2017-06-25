@@ -67,9 +67,13 @@
 
 
             <TextView
+                android:id="@+id/forgot_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
                 android:gravity="center_horizontal"
                 android:text="@string/forgot_password"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
@@ -87,10 +91,14 @@
                     android:text="@string/sign_up_message" />
 
                 <TextView
+                    android:id="@+id/sign_up"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/widget_margin"
                     android:layout_marginStart="@dimen/widget_margin"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:text="@string/sign_up"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
             </LinearLayout>
