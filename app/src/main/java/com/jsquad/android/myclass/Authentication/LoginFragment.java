@@ -96,7 +96,7 @@ public class LoginFragment extends Fragment implements LoaderCallbacks<Cursor>, 
 
     @Override
     public void grantAccess() {
-        // This should grant the user access to the app (meaning, their login credentials is valid
+        // This should grant the user access to the app (meaning, their login credentials is valid)
     }
 
     @Override
@@ -108,8 +108,10 @@ public class LoginFragment extends Fragment implements LoaderCallbacks<Cursor>, 
 
     @Override
     public void displayPasswordError(String errorMessage) {
-        // Same as above. password.setError(errorMessage)
+        // Same as above.. password.setError(errorMessage)
     }
+
+
 
     // POPULATE THE EMAIL FIELD WITH THE EMAIL ADDRESS ASSOCIATED WITH THE USER
     private void populateAutoComplete() {
